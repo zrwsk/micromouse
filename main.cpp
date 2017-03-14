@@ -12,7 +12,9 @@ int main() {
     
     maze.readFromFile(filename);
     
-    // for (vector<string>::iterator it = mazeBoard.begin(); it != mazeBoard.end(); it++) {
-    //     cout << *it << endl;
-    // } 
+    vector<int> startPosition;
+    startPosition = maze.getStartPosition();
+    
+    cout << startPosition[0] << endl;
+    cout << startPosition[1] << endl;
 }

@@ -10,3 +10,17 @@ void Maze::readFromFile(string filename) {
         mazeBoard.push_back(line);
     }
 }
+
+vector<int> Maze::getStartPosition() {
+    vector<int> position {0,0};
+    
+    for (vector<string>::iterator it = mazeBoard.begin(); it != mazeBoard.end(); it++) {
+        size_t found = (*it).find('s');
+        if (found != string::npos) {
+            position[0] = found;
+            break;
+        }
+        position[1]++;
+    } 
+    return position;
+}

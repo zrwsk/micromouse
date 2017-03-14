@@ -9,5 +9,6 @@ class Maze {
     vector<string> mazeBoard;
     public:
         void readFromFile(string filename);
-};
+        vector<int> getStartPosition();
+}; 
 
