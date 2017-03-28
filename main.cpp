@@ -1,20 +1,18 @@
 #include "applicationui.h"
 #include "maze.h"
+#include "mouse.h"
 
 using namespace std;
 
 int main() {
     ApplicationUI ui;
     Maze maze;
-    
-    ui.clearScreen();
+
     string filename = ui.showFileSelectionScreen("./maze_files");
     
     maze.readFromFile(filename);
+    ui.displayMaze(maze.getMaze());
     
-    vector<int> startPosition;
-    startPosition = maze.getStartPosition();
-    
-    cout << startPosition[0] << endl;
-    cout << startPosition[1] << endl;
+    Mouse mouse(maze, ui);
+    mouse.solveRightHand();
 }

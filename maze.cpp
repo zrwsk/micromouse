@@ -24,3 +24,23 @@ vector<int> Maze::getStartPosition() {
     } 
     return position;
 }
+
+vector<string> Maze::getMaze() {
+    return mazeBoard;
+}
+
+bool Maze::isFinish(int x, int y) {
+    if (mazeBoard[y][x] == 'e') {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+bool Maze::isWall(int x, int y) {
+    if (mazeBoard[y][x] == '#') {
+        return true;
+    } else {
+        return false;
+    }
+}
