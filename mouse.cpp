@@ -20,24 +20,30 @@ void Mouse::addSensor(int offsetX, int offsetY, Maze mazeBoard) {
 }
 
 void Mouse::solveRightHand() {
-    this->addSensor(1, 0, mazeBoard); //sensor 0
-    this->addSensor(0, 1, mazeBoard); //sensor 1
+    this->addSensor(1, 0, mazeBoard); //sensor 0 z prawej
+    this->addSensor(0, 1, mazeBoard); //sensor 1 z góry
+    this->addSensor(-1, 0, mazeBoard); //sensor 2 z lewej
     // while (!this->isOnFinish()) {
     // if (sensors[0].isWall(positionX, positionY, rotation)) {
     //   this->moveForward();
     // }
     // }
     while (!this->isOnFinish()) {
+        this_thread::sleep_for(chrono::milliseconds(1000));
+        
         if (!sensors[0].isWall(positionX, positionY, rotation)) {
             this->turnRight();
-            this->moveForward();
         } else if (!sensors[1].isWall(positionX, positionY, rotation)) {
-            this->moveForward();
-        } else {
+            //nie rób nic
+        } else if (!sensors[2].isWall(positionX, positionY, rotation)) {
             this->turnLeft();
-            this->moveForward();
+        } else {
+            //zawrócenie
+            this->turnRight();
+            this->turnRight();
         }
-        this_thread::sleep_for(chrono::milliseconds(1000));
+
+        this->moveForward();
     }
 }
 
