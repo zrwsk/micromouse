@@ -73,8 +73,3 @@ void ApplicationUI::displayPath(int x, int y) {
     attroff(COLOR_PAIR(1));
     refresh();
 }
-
-void ApplicationUI::printInt(int x) {
-    mvprintw(0, 0, to_string(x).c_str());
-    refresh();
-}
