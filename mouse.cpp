@@ -14,15 +14,15 @@ Mouse::Mouse(Maze _mazeBoard, ApplicationUI _ui) {
     ui.displayMouse(positionX, positionY, rotation);
 }
 
-void Mouse::addSensor(int offsetX, int offsetY, Maze mazeBoard) {
+void Mouse::addSensor(int offsetX, int offsetY) {
     Sensor sensor( offsetX, offsetY, mazeBoard);
     sensors.push_back(sensor);
 }
 
 void Mouse::solveRightHand() {
-    this->addSensor(1, 0, mazeBoard); //sensor 0 z prawej
-    this->addSensor(0, 1, mazeBoard); //sensor 1 z góry
-    this->addSensor(-1, 0, mazeBoard); //sensor 2 z lewej
+    this->addSensor(1, 0); //sensor 0 z prawej
+    this->addSensor(0, 1); //sensor 1 z góry
+    this->addSensor(-1, 0); //sensor 2 z lewej
     // while (!this->isOnFinish()) {
     // if (sensors[0].isWall(positionX, positionY, rotation)) {
     //   this->moveForward();
