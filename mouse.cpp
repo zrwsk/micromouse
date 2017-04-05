@@ -27,11 +27,7 @@ void Mouse::solveRightHand() {
     this->addSensor(1, 0); //sensor 0 z prawej
     this->addSensor(0, 1); //sensor 1 z góry
     this->addSensor(-1, 0); //sensor 2 z lewej
-    // while (!this->isOnFinish()) {
-    // if (sensors[0].isWall(positionX, positionY, rotation)) {
-    //   this->moveForward();
-    // }
-    // }
+
     while (!this->isOnFinish()) {
         this_thread::sleep_for(chrono::milliseconds(1000));
         
