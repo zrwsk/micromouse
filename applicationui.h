@@ -22,6 +22,17 @@ using namespace boost::filesystem;
  */
  
 class ApplicationUI {
+    int row; ///< dostępna ilość rzędów terminala
+    int col; ///< dostępna ilość kolumn terminala
+    /**
+     * \brief Odstawia kursor w dolny prawy róg
+     * 
+     * Ponieważ metoda curs_set z biblioteki ncurses
+     * nie działa prawidłowo we wszystkich terminalach,
+     * aby kursor nie był widoczny na wizualizacji
+     * jest on odstawiany w róg ekranu
+     */
+    void moveCursorToRightBottomCorner(); 
     public:
         /**
         * \brief Konstruktor
