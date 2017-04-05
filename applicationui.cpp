@@ -1,5 +1,5 @@
 #include "applicationui.h"
-
+#include <cstdio>
 ApplicationUI::ApplicationUI() {
     initscr();
     start_color();
@@ -8,7 +8,6 @@ ApplicationUI::ApplicationUI() {
 	init_pair(2, COLOR_WHITE, COLOR_BLACK);
 	init_pair(3, COLOR_RED, COLOR_WHITE);
 	curs_set(0);
-	getmaxyx(stdscr,row,col);
 }
 
 ApplicationUI::~ApplicationUI() {
@@ -60,6 +59,7 @@ void ApplicationUI::displayMaze(vector<string> mazeBoard) {
     for (vector<string>::iterator it = mazeBoard.begin(); it != mazeBoard.end(); it++) {
         printw((*it).c_str());
         printw("\n");
+        row++;
     } 
     attroff(COLOR_PAIR(3));
     refresh();
@@ -70,7 +70,7 @@ void ApplicationUI::displayMouse(int x, int y, int rotation) {
     attron(COLOR_PAIR(2));
     mvaddch(y, x, mouseSigns[rotation]);
     attroff(COLOR_PAIR(2));
-    moveCursorToRightBottomCorner();
+    moveCursorOutsideMaze();
     refresh();
 }
 
@@ -78,10 +78,10 @@ void ApplicationUI::displayPath(int x, int y) {
     attron(COLOR_PAIR(1));
     mvprintw(y, x, "*");
     attroff(COLOR_PAIR(1));
-    moveCursorToRightBottomCorner();
+    moveCursorOutsideMaze();
     refresh();
 }
 
-void ApplicationUI::moveCursorToRightBottomCorner() {
-    move(row - 1, col - 1);
+void ApplicationUI::moveCursorOutsideMaze() {
+    move(row, 0);
 }

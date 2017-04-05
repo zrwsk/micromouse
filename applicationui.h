@@ -22,17 +22,16 @@ using namespace boost::filesystem;
  */
  
 class ApplicationUI {
-    int row; ///< dostępna ilość rzędów terminala
-    int col; ///< dostępna ilość kolumn terminala
+    int row = 0; ///< rozmiar labiryntu (rzedy)
     /**
      * \brief Odstawia kursor w dolny prawy róg
      * 
      * Ponieważ metoda curs_set z biblioteki ncurses
      * nie działa prawidłowo we wszystkich terminalach,
      * aby kursor nie był widoczny na wizualizacji
-     * jest on odstawiany w róg ekranu
+     * jest on odstawiany poza labirynt
      */
-    void moveCursorToRightBottomCorner(); 
+    void moveCursorOutsideMaze(); 
     public:
         /**
         * \brief Konstruktor
