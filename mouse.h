@@ -44,6 +44,15 @@ class Mouse {
      * sensory będą patrzeć poprzez offsety na osi X i Y.
      */
     void addSensor(int offsetX, int offsetY); 
+    /**
+     * \brief Metoda sprawdzająca wartość sensora sensora
+     * \param sensorNumber numer sensora
+     * \return Metoda zwraca true, gdy sensor widzi ścianę.
+     * 
+     * Sprawdza wartość sensora zwracając true jeżeli 
+     * sensor widzi scianę.
+     */
+    bool checkSensor(int sensorNumber);
     void moveForward(); ///< Ruch myszy w przód
     void turnLeft(); ///< Skręt myszy w lewo
     void turnRight(); ///< Skręt myszy w prawo

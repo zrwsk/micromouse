@@ -19,6 +19,10 @@ void Mouse::addSensor(int offsetX, int offsetY) {
     sensors.push_back(sensor);
 }
 
+bool Mouse::checkSensor(int sensorNumber) {
+    return sensors[sensorNumber].isWall(positionX, positionY, rotation);
+}
+
 void Mouse::solveRightHand() {
     this->addSensor(1, 0); //sensor 0 z prawej
     this->addSensor(0, 1); //sensor 1 z góry
@@ -31,11 +35,11 @@ void Mouse::solveRightHand() {
     while (!this->isOnFinish()) {
         this_thread::sleep_for(chrono::milliseconds(1000));
         
-        if (!sensors[0].isWall(positionX, positionY, rotation)) {
+        if (!checkSensor(0)) {
             this->turnRight();
-        } else if (!sensors[1].isWall(positionX, positionY, rotation)) {
+        } else if (!checkSensor(1)) {
             //nie rób nic
-        } else if (!sensors[2].isWall(positionX, positionY, rotation)) {
+        } else if (!checkSensor(2)) {
             this->turnLeft();
         } else {
             //zawrócenie
